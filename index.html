@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#000000">
     <title>My Calculator</title>
 
     <style>
@@ -152,6 +154,19 @@
             }
         }
 
+    </script>
+    <script>
+if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function() {
+        navigator.serviceWorker.register("./sw.js")
+        .then(function() {
+            console.log("Calculator is ready offline");
+        })
+        .catch(function(error) {
+            console.log("Service Worker Error:", error);
+        });
+    });
+}
     </script>
 
 </body>
